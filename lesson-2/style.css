@@ -1,0 +1,206 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #001f3f;
+    overflow: hidden;
+}
+
+body::before, body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, white 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: twinkle 2s infinite alternate ease-in-out, scroll 10s linear infinite;
+    opacity: 0.5;
+}
+
+body::after {
+    background-size: 40px 40px;
+    opacity: 0.3;
+    animation: twinkle 2s infinite alternate ease-in-out, scroll 15s linear infinite reverse;
+}
+
+.rocket {
+    position: relative;
+    width: 50px;
+    height: 100px;
+    animation: launch 3s ease-in-out infinite;
+}
+
+.rocket-body {
+    width: 50px;
+    height: 100px;
+    background-color: #FF5733;
+    border-radius: 50% 50% 0 0;
+    position: relative;
+    z-index: 2;
+}
+
+.window {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 15px;
+}
+
+.left-wing, .right-wing {
+    width: 20px;
+    height: 50px;
+    background-color: #FF5733;
+    position: absolute;
+    top: 60px;
+    z-index: 1;
+}
+
+.left-wing {
+    transform: rotate(-330deg);
+    left: -10px;
+}
+
+.right-wing {
+    transform: rotate(330deg);
+    right: -10px;
+}
+
+.exhaust {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+}
+
+.exhaust::before, .exhaust::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    width: 10px;
+    height: 30px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    animation: flame-flicker 0.3s infinite alternate
+}
+
+.exhaust::before {
+    background-color: #FFD700; /* Outer yellow flame */
+    height: 40px;
+}
+
+.exhaust::after {
+    width: 8px;
+    height: 35px;
+    background-color: #FF4500; /* Red-orange inner flame */
+    opacity: 0.8;
+    animation-delay: 0.1s;
+}
+
+.smoke {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    background-color: rgba(200, 200, 200, 0.8); /* Light gray smoke */
+    border-radius: 50%;
+    animation: smoke-expand 3s ease-in-out infinite;
+}
+
+.smoke::before, .smoke::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    width: 15px;
+    height: 15px;
+    background-color: rgba(220, 220, 220, 0.7);
+    border-radius: 50%;
+    animation: smoke-expand 3s ease-in-out infinite;
+}
+
+.smoke::before {
+    left: -20px;
+    animation-delay: 0.5s
+}
+
+.smoke::after {
+    left: -20px;
+    animation-delay: 1s
+}
+
+@keyframes launch {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-200px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes flame {
+    0% {
+        transform: scaleY(1)
+    }
+    100% {
+        transform: scaleY(1.5);
+        opacity: 0.6;
+    }
+}
+
+@keyframes flame-flicker {
+    0% {
+        transform: scaleY(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scaleY(1.5);
+        opacity: 0.6;
+    }
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.8; }
+}
+
+@keyframes scroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100%); }
+}
+
+@keyframes smoke-expand {
+    0% {
+        transform: scale(0.5) translateY(0);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.2) translateY(-10px);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(1.5) translateY(-20px);
+        opacity: 0;
+    }
+}
+
+
+
+
+
